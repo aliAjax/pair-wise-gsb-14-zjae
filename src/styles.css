@@ -83,7 +83,7 @@ h1 {
 
 .metrics {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 18px;
 }
@@ -255,6 +255,371 @@ textarea {
   .app { padding: 18px; }
   .topbar, .workspace { grid-template-columns: 1fr; }
   .stack { justify-content: flex-start; }
-  .metrics { grid-template-columns: 1fr; }
+  .metrics { grid-template-columns: 1fr 1fr; }
   .details { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------------------------
+   多端台账界面样式
+--------------------------------------------------------------------------- */
+
+.terminal-card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #dfe7f1;
+  border-radius: 10px;
+  padding: 14px 16px;
+  min-width: 230px;
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #14a06c;
+  margin-top: 6px;
+  box-shadow: 0 0 0 4px rgba(20, 160, 108, .15);
+}
+
+.terminal-label {
+  margin: 0;
+  font-size: 12px;
+  color: #69758c;
+}
+
+.terminal-name {
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.terminal-input {
+  padding: 4px 8px;
+  min-width: 160px;
+}
+
+.terminal-id {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #8a94a8;
+}
+
+/* 提示弹窗 */
+.toasts {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 50;
+  display: grid;
+  gap: 10px;
+  max-width: 380px;
+}
+
+.toast {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  background: #172033;
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 30px rgba(23, 32, 51, .25);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.toast.success { background: #14724f; }
+.toast.warning { background: #b36b13; }
+.toast.danger { background: #c84b31; }
+.toast.info { background: #176b87; }
+
+.toast-close {
+  background: transparent;
+  padding: 0 2px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* 横幅 */
+.banner {
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.banner ul { margin: 6px 0 0; padding-left: 20px; }
+.banner.warning { background: #fdf4e3; border: 1px solid #f0c878; color: #7a4a08; }
+.banner.success { background: #e8f6ef; border: 1px solid #9fd8bc; color: #14553a; }
+
+/* 待处理提示 */
+.pending-banner {
+  background: #fff;
+  border: 1px solid #dfe7f1;
+  border-left: 4px solid #176b87;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.pending-banner h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.pending-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px 0;
+  border-top: 1px dashed #e2e8f1;
+  font-size: 14px;
+  color: #33405a;
+}
+
+.pending-line.mine { background: #f4faf8; border-radius: 6px; padding-left: 8px; padding-right: 8px; }
+.pending-line.draft { opacity: .92; }
+.pending-fuel { font-weight: 700; min-width: 76px; }
+.pending-meta { color: #7a849a; font-size: 13px; }
+
+.tag.warn {
+  border-color: #f0c878;
+  color: #9a5f0a;
+  background: #fdf4e3;
+}
+
+/* 状态徽章 */
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.badge.pending { background: #e7f0fb; color: #1758a4; }
+.badge.conflict_draft { background: #fdf0dc; color: #9a5f0a; }
+.badge.effective { background: #e8f6ef; color: #14724f; }
+.badge.rolled_back { background: #f3e5e2; color: #a13c27; }
+.badge.log-badge { background: #eef2f7; color: #445069; }
+
+em.up, .up { color: #c0492f; font-style: normal; font-weight: 700; }
+em.down, .down { color: #14724f; font-style: normal; font-weight: 700; }
+
+/* 表单 */
+.form-warn {
+  background: #fdf4e3;
+  border: 1px solid #f0c878;
+  color: #7a4a08;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.diff-row {
+  font-size: 13px;
+  color: #536078;
+  background: #f4f7fb;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.draft-tip {
+  margin: 0;
+  color: #9a5f0a;
+  font-size: 13px;
+}
+
+button.small {
+  padding: 5px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+/* 挂牌板 */
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.board-card {
+  border: 1px solid #dfe7f1;
+  border-radius: 10px;
+  padding: 14px;
+  background: #fbfcfe;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.board-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.board-fuel { margin: 0; font-weight: 700; font-size: 16px; }
+.board-price { margin: 0; font-size: 26px; font-weight: 800; color: #176b87; }
+.board-price small { font-size: 12px; font-weight: 400; color: #69758c; margin-left: 4px; }
+.board-source { margin: 0; font-size: 12px; color: #8a94a8; }
+
+.board-order {
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.pending-box { background: #f0f6fd; border: 1px solid #c3d8f0; }
+.draft-box { background: #fdf6ea; border: 1px solid #f0d59a; }
+
+.board-order-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.board-order-meta { margin: 6px 0 0; font-size: 13px; color: #536078; }
+.board-note {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #445069;
+  background: rgba(255,255,255,.7);
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.queue-title { margin: 0 0 8px; font-size: 13px; font-weight: 700; color: #7a4a08; }
+.queue-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 6px 0;
+  border-top: 1px dashed #e8d5aa;
+  font-size: 13px;
+}
+.queue-index {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #d89a3c;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  flex: none;
+}
+.queue-item > div { flex: 1; }
+
+.board-idle { margin: 0; color: #8a94a8; font-size: 13px; text-align: center; padding: 6px 0; }
+
+.filters {
+  display: flex;
+  gap: 8px;
+}
+.filters select { width: auto; }
+
+/* 台账表格 */
+.ledger-panel, .log-panel {
+  background: #fff;
+  border: 1px solid #dfe7f1;
+  border-radius: 8px;
+  padding: 18px;
+  margin-top: 18px;
+}
+
+.table-wrap { overflow-x: auto; }
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 1000px;
+}
+
+.ledger-table th, .ledger-table td {
+  text-align: left;
+  padding: 10px 10px;
+  border-bottom: 1px solid #e7edf4;
+  vertical-align: top;
+}
+
+.ledger-table th {
+  color: #69758c;
+  font-weight: 600;
+  background: #f7f9fc;
+}
+
+.note-cell { max-width: 220px; color: #445069; }
+.time-cell { white-space: nowrap; color: #69758c; }
+.op-cell { white-space: nowrap; }
+.op-cell button { margin-right: 4px; margin-bottom: 4px; }
+
+.legacy-tag {
+  margin-left: 6px;
+  background: #eef2f7;
+  color: #445069;
+  border-radius: 4px;
+  padding: 0 6px;
+  font-size: 11px;
+}
+
+.empty {
+  text-align: center;
+  color: #69758c;
+  padding: 32px 12px;
+}
+
+/* 操作日志 */
+.log-list { display: grid; gap: 10px; }
+
+.log-item {
+  border: 1px solid #e7edf4;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.log-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.log-detail { flex: 1; min-width: 220px; color: #33405a; }
+.log-meta { color: #8a94a8; font-size: 12px; }
+.log-toggle { color: #176b87; font-size: 12px; white-space: nowrap; }
+
+.snapshot {
+  border-top: 1px dashed #dfe7f1;
+  background: #f7f9fc;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #536078;
+}
+
+.snapshot p { margin: 0 0 8px; }
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px 14px;
+}
+.snapshot-grid em { color: #8a94a8; font-style: normal; font-size: 12px; }
+
+@media (max-width: 1100px) {
+  .board-grid { grid-template-columns: 1fr; }
+  .snapshot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

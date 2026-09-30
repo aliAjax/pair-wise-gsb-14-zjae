@@ -16,3 +16,4 @@ pnpm-debug.log*
 *.tsbuildinfo
 .idea/
 .vscode/
+scripts/verify.mjs
